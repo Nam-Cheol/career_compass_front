@@ -1,6 +1,8 @@
 // lib/views/splash_screen.dart
 
+import 'package:career_compass_front/view/user_job_chat.dart';
 import 'package:flutter/material.dart';
+
 // import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'home_screen.dart';
@@ -85,7 +87,12 @@ class SplashScreen extends ConsumerWidget {
                 right: 0,
                 child: Center(
                   child: GestureDetector(
-                    // onTap: () => _handleSignIn(context, ref),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    },
                     child: Image.asset(
                       'assets/images/googleLogIn.png', // 수정된 경로
                       width: 200,

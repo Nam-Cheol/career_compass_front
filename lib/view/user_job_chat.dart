@@ -7,6 +7,11 @@ import '../models/job/chat_state.dart';
 import '../providers/provider/chat_provider.dart';
 
 class UserJobChat extends ConsumerWidget {
+
+  final String? initialMessage;
+
+  UserJobChat({this.initialMessage});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // 채팅 상태를 Riverpod을 통해 구독
