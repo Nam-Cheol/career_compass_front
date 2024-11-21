@@ -94,7 +94,7 @@ class SplashScreen extends ConsumerWidget {
                               builder: (context) => HomeScreen()));
                     },
                     child: Image.asset(
-                      'assets/images/googleLogIn.png', // 수정된 경로
+                      'assets/images/start-btn.png', // 수정된 경로
                       width: 200,
                       height: 50,
                     ),
