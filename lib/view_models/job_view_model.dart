@@ -52,8 +52,8 @@ class JobViewModel extends StateNotifier<ChatState> {
     final userSendConversation = UserSendConversation(
       id: 1, // 임시 ID 할당
       user: 1, // 실제 사용자 ID로 변경
-      numberOfQuestions: 1,
-      question: '확인중입니다',
+      numberOfQuestions: numberOfQuestions,
+      question: text,
     );
 
     print('-------------------------------');
@@ -64,8 +64,15 @@ class JobViewModel extends StateNotifier<ChatState> {
       // 서버에 메시지 전송 및 AI 응답 받기
       final userReceiverConversation = await _jobRepository.sendMessageToServer(userSendConversation);
 
+      if(userReceiverConversation.resultJob == '') {
+        userReceiverConversation.resultJob = '쿠쿠루삥뽕';
+      }
+
       // AI 응답 추가 및 로딩 상태 해제
       final aiMessage = ChatMessage(text: userReceiverConversation.answer, isUser: false);
+      print('================');
+      print(userReceiverConversation);
+      print('================');
       state = state.copyWith(
         messages: [...state.messages, aiMessage],
         isLoading: false,
